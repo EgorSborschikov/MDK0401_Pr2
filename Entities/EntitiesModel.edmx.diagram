@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0f5bf368020448cfbe4a5e71f5a8c9ef" Name="Diagram1">
+      <Diagram DiagramId="0f5bf368020448cfbe4a5e71f5a8c9ef" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="mdk0401_pr_2Model.Materials" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="mdk0401_pr_2Model.MaterialType" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="mdk0401_pr_2Model.Products" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdk0401_pr_2Model.Products" Width="1.5" PointX="7" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="mdk0401_pr_2Model.ProductsMaterial" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="mdk0401_pr_2Model.ProductType" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="mdk0401_pr_2Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="mdk0401_pr_2Model.UnitsOfMeasurement" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdk0401_pr_2Model.ProductType" Width="1.5" PointX="4.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdk0401_pr_2Model.sysdiagrams" Width="1.5" PointX="10.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mdk0401_pr_2Model.UnitsOfMeasurement" Width="1.5" PointX="0.625" PointY="4.25" IsExpanded="true" />
         <AssociationConnector Association="mdk0401_pr_2Model.FK_Materials_MaterialType" ManuallyRouted="false" />
         <AssociationConnector Association="mdk0401_pr_2Model.FK_Materials_UnitsOfMeasurement" ManuallyRouted="false" />
         <AssociationConnector Association="mdk0401_pr_2Model.FK_ProductsMaterial_Materials" ManuallyRouted="false" />

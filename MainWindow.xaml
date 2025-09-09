@@ -14,13 +14,79 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Background="#BBD9B2">
-            <Image Width="45" Height="45" Source="/Resources/OurDecor.png" Margin="10"/>
-            <TextBlock Text="Список услуг" FontWeight="Bold"/>
-        </StackPanel>
+        <Grid Grid.Row="0" Background="#BBD9B2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                <Image Width="45" Height="45" Source="/Resources/OurDecor.png"/>
+                <TextBlock Text="Список товаров" FontSize="18" FontWeight="Bold" 
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Button x:Name="BtnAdd" Content="Добавить заявку" Background="#2D6033" Foreground="White" Margin="20,0,0,0" Padding="10,5" Click="BtnAdd_Click"/>
+            </StackPanel>
+        </Grid>
 
-        <ScrollViewer Grid.Row="1">
-            
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="ProductsListBox" Margin="10">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" Margin="0,5"
+                                Width="750" Height="140"
+                                HorizontalAlignment="Center">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Style.Triggers>
+                                        
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Type}" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text=" | " Margin="5,0" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="14"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <TextBlock Text="{Binding CalculatedCost, StringFormat={}{0:N2}}" 
+                                                   Foreground="Green" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text=" руб" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="Артикул: " FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Articul}" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="Минимальная стоимость для партнера: " FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding MinCostForPartner}" Margin="10,0,0,0"/>
+                                    <TextBlock Text=" руб" Margin="5,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                                    <TextBlock Text="Ширина: " FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding RollWidthInMetr}" Margin="10,0,0,0"/>
+                                    <TextBlock Text=" м" Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </Window>

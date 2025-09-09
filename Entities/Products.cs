@@ -11,7 +11,8 @@ namespace MDK0401Pr2.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,5 +31,8 @@ namespace MDK0401Pr2.Entities
         public virtual ProductType ProductType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductsMaterial> ProductsMaterial { get; set; }
+
+        [NotMapped]
+        public decimal CalculatedCost { get; set; }
     }
 }
