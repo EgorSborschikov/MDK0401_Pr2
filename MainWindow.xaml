@@ -29,7 +29,9 @@
                     <DataTemplate>
                         <Border BorderBrush="Gray" BorderThickness="1" Margin="0,5"
                                 Width="750" Height="140"
-                                HorizontalAlignment="Center">
+                                HorizontalAlignment="Center"
+                                Cursor="Hand"
+                                MouseLeftButtonDown="ProductItem_MouseDoubleClick">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="White"/>
@@ -68,7 +70,7 @@
 
                                 <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
                                     <TextBlock Text="Артикул: " FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Articul}" Margin="10,0,0,0"/>
+                                    <TextBlock Text="{Binding Articul, StringFormat={}{0:N0}}" Margin="10,0,0,0"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">

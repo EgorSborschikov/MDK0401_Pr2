@@ -101,34 +101,6 @@ namespace MDK0401Pr2
             }
         }
 
-        private decimal CalculateProductCost(Products product)
-        {
-            if (product?.ProductsMaterial == null)
-                return 0;
-
-            decimal totalCost = 0;
-
-            foreach (var productMaterial in product.ProductsMaterial)
-            {
-                if (productMaterial.Materials != null &&
-                    productMaterial.RequredMaterialQuantity > 0)
-                {
-                    decimal materialCost = productMaterial.Materials.UnitPriceOfMaterial
-                        * productMaterial.RequredMaterialQuantity;
-
-                    totalCost += materialCost;
-                }
-            }
-
-            if (product.ProductType != null &&
-                    product.ProductType.CoefficienProductType > 0)
-            {
-                totalCost *= product.ProductType.CoefficienProductType;
-            }
-
-            return Math.Max(0, Math.Round(totalCost, 2));
-        }
-
         protected override void OnClosed(EventArgs e)
         {
             _context?.Dispose();
@@ -137,10 +109,54 @@ namespace MDK0401Pr2
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var addWindow = new AddAndEditProductWindow();
+                addWindow.Owner = this;
+                addWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
+                if (addWindow.ShowDialog() == true)
+                {
+                    LoadProducts();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка открытия страницы: {ex.Message}");
+            }
+        }
+
+        private void ProductItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // Проверяем, что кликнули именно по Border с данными продукта
+            if (sender is Border border && border.DataContext is ProductsDisplay product)
+            {
+                try
+                {
+                    // Открываем окно редактирования
+                    var editWindow = new AddAndEditProductWindow(product.ID);
+                    editWindow.Owner = this;
+                    editWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+                    if (editWindow.ShowDialog() == true)
+                    {
+                        // Обновляем данные после редактирования
+                        LoadProducts();
+                       MessageBox.Show("Успех", "Продукт успешно отредактирован.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка открытия",
+                        $"Не удалось открыть продукт для редактирования: {ex.Message}");
+                }
+
+                // Предотвращаем дальнейшую обработку события
+                e.Handled = true;
+            }
         }
     }
 
+    // Дополнительный класс модели представления
     public class ProductsDisplay
     {
         public int ID { get; set; }

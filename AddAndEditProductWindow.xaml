@@ -1,0 +1,71 @@
+﻿<Window x:Class="MDK0401Pr2.AddAndEditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MDK0401Pr2"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        FontFamily="Gabriola"
+        Icon="/Resources/OurDecor.ico"
+        Title="Добавление/Редактирование продуктов" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#BBD9B2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                <Button x:Name="BtnBack" Content="Назад" Background="#BBD9B2" Foreground="White" Margin="20,0,0,0" Padding="10,5" Click="BtnBack_Click"/>
+                <Image Width="45" Height="45" Source="/Resources/OurDecor.png" HorizontalAlignment="Center"/>
+                <TextBlock Text="Список товаров" FontSize="18" FontWeight="Bold" 
+                   VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Width="400">
+                <TextBlock Text="Артикул*" Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <TextBox x:Name="TxtArticul" Margin="0,0,0,15" Height="25"
+             ToolTip="Введите артикул продукта"/>
+
+                <TextBlock Text="Тип продукта*" Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <ComboBox x:Name="CmbProductType" Margin="0,0,0,15" Height="25"
+              DisplayMemberPath="Type"
+              ToolTip="Выберите тип продукта из списка"/>
+
+                <TextBlock Text="Наименование*" Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <TextBox x:Name="TxtProductName" Margin="0,0,0,15" Height="25"
+             ToolTip="Введите наименование продукта"/>
+
+                <TextBlock Text="Минимальная стоимость для партнера*" 
+               Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <TextBox x:Name="TxtMinCost" Margin="0,0,0,15" Height="25"
+             PreviewTextInput="DecimalTextBox_PreviewTextInput"
+             ToolTip="Введите стоимость (только числа и точка для дробной части)"/>
+
+                <TextBlock Text="Ширина рулона (м)*" Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <TextBox x:Name="TxtRollWidth" Margin="0,0,0,20" Height="25"
+             PreviewTextInput="DecimalTextBox_PreviewTextInput"
+             ToolTip="Введите ширину рулона в метрах (только числа и точка для дробной части)"/>
+
+                <TextBlock Text="* - обязательные поля" FontStyle="Italic" 
+               Foreground="Gray" Margin="0,0,0,10"/>
+            </StackPanel>
+
+        </ScrollViewer>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="BtnCancel" Content="Отмена" Width="80" Height="30" 
+                    Margin="0,0,10,0" Click="BtnCancel_Click"
+                    ToolTip="Закрыть окно без сохранения"/>
+
+            <Button x:Name="BtnSave" Content="Сохранить" Width="80" Height="30"
+                    Background="#2D6033" Foreground="White"
+                    Click="BtnSave_Click" ToolTip="Сохранить изменения"/>
+        </StackPanel>
+    </Grid>
+</Window>
