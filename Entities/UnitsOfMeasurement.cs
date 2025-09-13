@@ -11,7 +11,8 @@ namespace MDK0401Pr2.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class UnitsOfMeasurement
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,8 @@ namespace MDK0401Pr2.Entities
         {
             this.Materials = new HashSet<Materials>();
         }
-    
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Unit { get; set; }
     

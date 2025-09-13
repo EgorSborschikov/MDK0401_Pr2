@@ -20,7 +20,8 @@ namespace MDK0401Pr2.Entities
         {
             this.ProductsMaterial = new HashSet<ProductsMaterial>();
         }
-    
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public int IDProductType { get; set; }
         public string ProductName { get; set; }

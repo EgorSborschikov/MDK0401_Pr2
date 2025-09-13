@@ -133,8 +133,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MaterialCalculateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductsMaterialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MaterialCalculateWindow.xaml.cs">
+      <DependentUpon>MaterialCalculateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialCalculator.cs" />
+    <Compile Include="ProductsMaterialWindow.xaml.cs">
+      <DependentUpon>ProductsMaterialWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

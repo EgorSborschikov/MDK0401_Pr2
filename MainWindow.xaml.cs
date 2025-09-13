@@ -154,6 +154,31 @@ namespace MDK0401Pr2
                 e.Handled = true;
             }
         }
+
+        private void BtnMaterials_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is ProductsDisplay product)
+            {
+                try
+                {
+                    // Открываем окно материалов
+                    var materialsWindow = new ProductsMaterialWindow(
+                        product.ID,
+                        product.ProductName,
+                        product.Articul,
+                        product.Type);
+
+                    materialsWindow.Owner = this;
+                    materialsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    materialsWindow.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка открытия",
+                        $"Не удалось открыть список материалов: {ex.Message}");
+                }
+            }
+        }
     }
 
     // Дополнительный класс модели представления

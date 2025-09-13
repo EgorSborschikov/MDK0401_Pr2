@@ -11,9 +11,12 @@ namespace MDK0401Pr2.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class ProductsMaterial
     {
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public int IDProduct { get; set; }
         public int IDMaterial { get; set; }
